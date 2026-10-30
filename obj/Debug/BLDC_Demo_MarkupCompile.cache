@@ -1,0 +1,20 @@
+﻿BLDC_Demo
+
+
+winexe
+C#
+.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\
+BLDC_Demo
+none
+false
+DEBUG;TRACE
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\App.xaml
+17-291338821
+
+301146185056
+25-522555833
+AdvancedSettingsControl.xaml;AppShellControl.xaml;AuxUsage.xaml;CommMotorSelectControl.xaml;Connections.xaml;FirmwareUploadControl.xaml;LeftMdrControl.xaml;LookAheadTimingControl.xaml;MainWindow.xaml;MotorControlPanel.xaml;Motor_Type.xaml;NetworkConfigControl.xaml;NetworkService.xaml;RightMdrControl.xaml;Sensor.xaml;ZMP_MODE.xaml;ZPASettingControl.xaml;
+
+False
+

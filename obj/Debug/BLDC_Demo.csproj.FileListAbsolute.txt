@@ -1,0 +1,122 @@
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\Motorparameters.json
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\BLDC_Demo.exe.config
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\BLDC_Demo.exe
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\BLDC_Demo.pdb
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\NModbus4.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Buffers.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.IO.Pipelines.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Memory.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Numerics.Vectors.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Text.Encodings.Web.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Text.Json.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.csproj.AssemblyReference.cache
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AuxUsage.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\FirmwareUploadControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\LookAheadTimingControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\MotorControlPanel.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\NetworkConfigControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\ZPASettingControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AdvancedSettingsControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AppShellControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AuxUsage.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\CommMotorSelectControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Connections.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\FirmwareUploadControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\LeftMdrControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\LookAheadTimingControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\MainWindow.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\MotorControlPanel.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Motor_Type.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\NetworkConfigControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\NetworkService.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\RightMdrControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Sensor.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\ZMP_MODE.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\ZPASettingControl.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\App.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo_MarkupCompile.cache
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo_MarkupCompile.lref
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\App.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AdvancedSettingsControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AppShellControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\CommMotorSelectControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Connections.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\LeftMdrControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\MainWindow.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Motor_Type.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\NetworkService.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\RightMdrControl.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Sensor.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\ZMP_MODE.baml
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.g.resources
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.Properties.Resources.resources
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.csproj.GenerateResource.cache
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.csproj.CoreCompileInputs.cache
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.csproj.Up2Date
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.exe
+D:\Hardware Project BLDC\BLDC _Project\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.pdb
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\Motorparameters.json
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\BLDC_Demo.exe.config
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\BLDC_Demo.exe
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\BLDC_Demo.pdb
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\NModbus4.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Buffers.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.IO.Pipelines.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Memory.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Numerics.Vectors.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Text.Encodings.Web.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Text.Json.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.csproj.AssemblyReference.cache
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AuxUsage.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\FirmwareUploadControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\LookAheadTimingControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\MotorControlPanel.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\NetworkConfigControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\ZPASettingControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AdvancedSettingsControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AppShellControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AuxUsage.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\CommMotorSelectControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Connections.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\FirmwareUploadControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\LeftMdrControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\LookAheadTimingControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\MainWindow.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\MotorControlPanel.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Motor_Type.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\NetworkConfigControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\NetworkService.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\RightMdrControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Sensor.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\ZMP_MODE.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\ZPASettingControl.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\App.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo_MarkupCompile.cache
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo_MarkupCompile.lref
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\App.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AdvancedSettingsControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\AppShellControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\CommMotorSelectControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Connections.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\LeftMdrControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\MainWindow.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Motor_Type.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\NetworkService.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\RightMdrControl.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\Sensor.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\ZMP_MODE.baml
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.g.resources
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.Properties.Resources.resources
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.csproj.GenerateResource.cache
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.csproj.CoreCompileInputs.cache
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.csproj.CopyComplete
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.exe
+D:\Slack Downloads\TEC_MDR_Application\TEC_MDR_Application\obj\Debug\BLDC_Demo.pdb
