@@ -1466,6 +1466,25 @@ namespace BLDC_Demo
             MessageBox.Show("Configuration sent", "Configuration Sent", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        // MDR direction, ZPA direction and MDR flag are shown ONLY while the card is in ZPA mode.
+        // They follow the card when its value changes, and never while Edit Mode is on.
+        private void SyncZpaStatus(ModbusDevice d)
+        {
+            if (IsEditMode || d.ZpaMode != 1) return;
+            SyncCombo(MDRDirectionComboBox, d.MdrDirectionValue, ref _seenMdr);
+            SyncCombo(ipdirection, d.ZpaDirectionValue, ref _seenDir);
+            SyncCombo(MDRflagComboBox, d.MdrOffFlagValue, ref _seenFlag);
+        }
+
+        private void ClearZpaStatus()
+        {
+            if (IsEditMode) return;
+            if (MDRDirectionComboBox.SelectedIndex != -1) MDRDirectionComboBox.SelectedIndex = -1;
+            if (ipdirection.SelectedIndex != -1) ipdirection.SelectedIndex = -1;
+            if (MDRflagComboBox.SelectedIndex != -1) MDRflagComboBox.SelectedIndex = -1;
+            _seenMdr = _seenDir = _seenFlag = -2;
+        }
+
         private int _previousZpaMode = -1;
 
         public void UpdateMotorTelemetry(ModbusDevice device)
@@ -1474,12 +1493,6 @@ namespace BLDC_Demo
 
             Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
-                if (!IsEditMode)
-                {
-                    SyncCombo(MDRDirectionComboBox, device.MdrDirectionValue, ref _seenMdr);   // MDR DIRECTION
-                    SyncCombo(ipdirection, device.ZpaDirectionValue, ref _seenDir);   // ZPA DIRECTION
-                }
-
                 // Read mode status directly from telemetry
                 if (device.ZpaMode == 1)
                 {
@@ -1496,6 +1509,8 @@ namespace BLDC_Demo
                             ModeComboBox.SelectedIndex = MODE_GAP_TRAIN;
                         }
 
+                        SyncZpaStatus(device);
+
                         MessageBox.Show("ZPA is active", "ZPA Status", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
@@ -1503,10 +1518,10 @@ namespace BLDC_Demo
                 {
                     SetZpaActiveIndicator(false);
                     _previousZpaMode = 0;
+                    ClearZpaStatus();
                 }
 
-                if (!IsEditMode && IsGapTrainMode)
-                    SyncCombo(MDRflagComboBox, device.MdrOffFlagValue, ref _seenFlag);          // MDR OFF FLAG
+                SyncZpaStatus(device);
 
                 // Master / Last IP data is shown only in GAP Train mode
                 if (!IsGapTrainMode) return;

@@ -1,5 +1,4 @@
-﻿
-////using BLDC_Demo.Controls;
+﻿////using BLDC_Demo.Controls;
 ////using BLDC_Demo.Models;
 ////using System;
 ////using System.Collections.ObjectModel;
@@ -1718,11 +1717,49 @@ namespace BLDC_Demo
             SetButtonsEnabled = connected;
         }
 
+        // Motor type and brake method follow what the card reports, so they are shown after connecting.
+        private int _seenMotor = -2, _seenBrake = -2;
+        private bool _syncing;     // programmatic change: nothing is sent to the card
+
+        private void SyncMotorType(int ratio)
+        {
+            if (ratio <= 0 || ratio == _seenMotor) return;
+            _seenMotor = ratio;
+            if (LeftMotorCombo.IsDropDownOpen) return;
+            foreach (var o in LeftMotorCombo.Items)
+            {
+                if (!(o is MotorTypeItem it)) continue;
+                int x = it.Name.LastIndexOf('x');
+                if (x < 0 || !int.TryParse(it.Name.Substring(x + 1).Trim(), out int r) || r != ratio) continue;
+                if (!ReferenceEquals(LeftMotorCombo.SelectedItem, it))
+                {
+                    _syncing = true;
+                    LeftMotorCombo.SelectedItem = it;
+                    _syncing = false;
+                }
+                break;
+            }
+        }
+
+        private void SyncBrake(int index)
+        {
+            if (index < 0 || index >= LeftBrakeCombo.Items.Count || index == _seenBrake) return;
+            _seenBrake = index;
+            if (LeftBrakeCombo.IsDropDownOpen) return;
+            if (LeftBrakeCombo.SelectedIndex != index)
+            {
+                _syncing = true;
+                LeftBrakeCombo.SelectedIndex = index;
+                _syncing = false;
+            }
+        }
+
         // ══════════════════ MOTOR TYPE ══════════════════
         // Sends the number after the 'x' as a plain integer to register 0x0001.
         // "BL 42 85 x 24" -> 24
         private void LeftMotorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncing) return;
             if (!(LeftMotorCombo.SelectedItem is MotorTypeItem item)) return;
 
             int xPos = item.Name.LastIndexOf('x');
@@ -1751,6 +1788,7 @@ namespace BLDC_Demo
         // ══════════════════ BRAKE METHOD ══════════════════
         private void LeftBrakeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncing) return;
             if (LeftBrakeCombo.SelectedIndex < 0) return;
 
             // Register 0x002E = Left Brake Index (see BL.ParseAndUpdateUI)
@@ -1873,6 +1911,9 @@ namespace BLDC_Demo
 
             Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
+                SyncMotorType(device.LeftMotorHallTypeIndex);
+                SyncBrake(device.LeftBrakeIndex);
+
                 // FIXED: do not overwrite a box the user is typing in
                 // (the old "|| value == "0"" check erased typing while the motor was stopped).
                 if (!LeftSpeedTextBox.IsFocused)
@@ -1918,6 +1959,7 @@ namespace BLDC_Demo
             LeftCurrentTextBox.Text = string.Empty;
             LeftAccelTextBox.Text = string.Empty;
             LeftDecelTextBox.Text = string.Empty;
+            _seenMotor = _seenBrake = -2;   // show the card's motor type / brake again after the next connect
             LeftBrakeCombo.SelectedIndex = -1;
             LeftMotorCombo.SelectedIndex = -1;
             LeftDirectionCombo.SelectedIndex = -1;
