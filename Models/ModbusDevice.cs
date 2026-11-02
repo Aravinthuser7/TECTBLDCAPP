@@ -308,6 +308,13 @@ namespace BLDC_Demo.Models
         private int _leftBrakeIndex;
         public int LeftBrakeIndex { get => _leftBrakeIndex; set { _leftBrakeIndex = value; OnPropertyChanged(nameof(LeftBrakeIndex)); } }
 
+        // Sensor configuration as the card reports it (echo of 0x0061-0x0064). -1 = not received yet.
+        private int _leftSensorNpn = -1, _leftSensorNc = -1, _rightSensorNpn = -1, _rightSensorNc = -1;
+        public int LeftSensorNpn { get => _leftSensorNpn; set { _leftSensorNpn = value; OnPropertyChanged(nameof(LeftSensorNpn)); } }   // 1 = NPN, 0 = PNP
+        public int LeftSensorNc { get => _leftSensorNc; set { _leftSensorNc = value; OnPropertyChanged(nameof(LeftSensorNc)); } }    // 1 = NC,  0 = NO
+        public int RightSensorNpn { get => _rightSensorNpn; set { _rightSensorNpn = value; OnPropertyChanged(nameof(RightSensorNpn)); } }  // 1 = NPN, 0 = PNP
+        public int RightSensorNc { get => _rightSensorNc; set { _rightSensorNc = value; OnPropertyChanged(nameof(RightSensorNc)); } }   // 1 = NC,  0 = NO
+
         private int _rightMotorHallTypeIndex;
         public int RightMotorHallTypeIndex { get => _rightMotorHallTypeIndex; set { _rightMotorHallTypeIndex = value; OnPropertyChanged(nameof(RightMotorHallTypeIndex)); } }
 
@@ -453,6 +460,7 @@ namespace BLDC_Demo.Models
             this.LeftMotorHallTypeIndex = -1;
             this.RightMotorHallTypeIndex = -1;
             this.LeftBrakeIndex = -1;
+            this.LeftSensorNpn = this.LeftSensorNc = this.RightSensorNpn = this.RightSensorNc = -1;
             this.RightBrakeIndex = -1;
             this.IsActive = false;
             this.LeftOverCurrent = -1;

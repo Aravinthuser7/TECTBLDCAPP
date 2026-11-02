@@ -1668,6 +1668,18 @@ namespace BLDC_Demo.Controls
                     case 0x002E: // Left Brake Index
                         device.LeftBrakeIndex = val;
                         break;
+                    case 0x0061: // Left sensor type echo   (1 = NPN, 0 = PNP)
+                        device.LeftSensorNpn = val;
+                        break;
+                    case 0x0062: // Left sensor contact echo (1 = NC, 0 = NO)
+                        device.LeftSensorNc = val;
+                        break;
+                    case 0x0063: // Right sensor type echo  (1 = NPN, 0 = PNP)
+                        device.RightSensorNpn = val;
+                        break;
+                    case 0x0064: // Right sensor contact echo (1 = NC, 0 = NO)
+                        device.RightSensorNc = val;
+                        break;
                     case 0x0001: // Left Hall Type
                         device.LeftMotorHallTypeIndex = val;
                         break;

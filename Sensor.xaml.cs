@@ -103,23 +103,31 @@ namespace BLDC_Demo
         // Keeps the Save buttons in sync with the connection state
         private DispatcherTimer _stateTimer;
 
+        // The radio buttons show what the CARD reports (echo of 0x0061-0x0064). A side the user
+        // has changed but not saved yet is left alone, and for 2 s after SET/SAVE the old echo is
+        // ignored so the box keeps showing what was just set until the card confirms it.
+        private bool _dirtyLeft, _dirtyRight;
+        private DateTime _holdLeft = DateTime.MinValue, _holdRight = DateTime.MinValue;
+
         public Sensor()
         {
             InitializeComponent();
 
             Loaded += Sensor_Loaded;
             Unloaded += Sensor_Unloaded;
+            AddHandler(System.Windows.Controls.Primitives.ButtonBase.ClickEvent, new RoutedEventHandler(OnAnyClick));
         }
 
         // ══════════════════ CONNECTION STATE ══════════════════
         private void Sensor_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateButtonState();
+            SyncFromCard();
 
             if (_stateTimer == null)
             {
                 _stateTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(300) };
-                _stateTimer.Tick += (s, args) => UpdateButtonState();
+                _stateTimer.Tick += (s, args) => { UpdateButtonState(); SyncFromCard(); };
             }
             _stateTimer.Start();
         }
@@ -127,11 +135,46 @@ namespace BLDC_Demo
         private void Sensor_Unloaded(object sender, RoutedEventArgs e)
         {
             _stateTimer?.Stop();
+            _dirtyLeft = _dirtyRight = false;   // leaving the page: show the card's values again next time
         }
 
         // Uses this control's BLLogic if MainWindow set it, otherwise MainWindow's own.
         private BL ActiveBL =>
             BLLogic ?? (Application.Current.MainWindow as MainWindow)?.BLLogic;
+
+        // A radio button the user clicked = unsaved change on that side.
+        private void OnAnyClick(object sender, RoutedEventArgs e)
+        {
+            if (!(e.OriginalSource is RadioButton rb) || rb.Name == null) return;
+            if (rb.Name.StartsWith("LeftSensor1")) _dirtyLeft = true;
+            else if (rb.Name.StartsWith("RightSensor1")) _dirtyRight = true;
+        }
+
+        private void SyncFromCard()
+        {
+            BL bl = ActiveBL;
+            if (bl == null || !bl.IsConnected) return;
+            ModbusDevice d = bl.CurrentDevice;
+            if (d == null) return;
+
+            if (!_dirtyLeft && DateTime.UtcNow >= _holdLeft)
+                ShowSensor(d.LeftSensorNpn, d.LeftSensorNc,
+                           LeftSensor1NpnRadioButton, LeftSensor1PnpRadioButton,
+                           LeftSensor1NoRadioButton, LeftSensor1NcRadioButton);
+
+            if (!_dirtyRight && DateTime.UtcNow >= _holdRight)
+                ShowSensor(d.RightSensorNpn, d.RightSensorNc,
+                           RightSensor1NpnRadioButton, RightSensor1PnpRadioButton,
+                           RightSensor1NoRadioButton, RightSensor1NcRadioButton);
+        }
+
+        // npn / nc: 1 or 0 as reported by the card, -1 = nothing received yet (leave as is).
+        private static void ShowSensor(int npn, int nc, RadioButton npnRb, RadioButton pnpRb,
+                                       RadioButton noRb, RadioButton ncRb)
+        {
+            if (npn == 0 || npn == 1) (npn == 1 ? npnRb : pnpRb).IsChecked = true;
+            if (nc == 0 || nc == 1) (nc == 1 ? ncRb : noRb).IsChecked = true;
+        }
 
         private bool IsDeviceConnected()
         {
@@ -178,6 +221,7 @@ namespace BLDC_Demo
             BLLogic?.SendWriteCommand(LeftSensor1NpnRegister, sensorType is "NPN" ? (ushort)1 : (ushort)0);
             BLLogic?.SendWriteCommand(LeftSensor1NcRegister, contactState is "NC" ? (ushort)1 : (ushort)0);
             System.Diagnostics.Debug.WriteLine("Left Sensor 1 NPN and NC command sent");
+            _dirtyLeft = false; _holdLeft = DateTime.UtcNow.AddSeconds(2);
         }
 
         // ══════════════════ LEFT SENSOR 2 ══════════════════
@@ -204,6 +248,7 @@ namespace BLDC_Demo
             BLLogic?.SendWriteCommand(RightSensor1NpnRegister, sensorType is "NPN" ? (ushort)1 : (ushort)0);
             BLLogic?.SendWriteCommand(RightSensor1NcRegister, contactState is "NC" ? (ushort)1 : (ushort)0);
             System.Diagnostics.Debug.WriteLine("Right Sensor 1 NPN and NC command sent");
+            _dirtyRight = false; _holdRight = DateTime.UtcNow.AddSeconds(2);
         }
 
         // ══════════════════ RIGHT SENSOR 2 ══════════════════

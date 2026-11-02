@@ -1821,6 +1821,51 @@ namespace BLDC_Demo
             }
         }
 
+        // ══════════════════ KEEP WHAT THE USER TYPED ══════════════════
+        // Why this exists: pressing SET moves the keyboard focus from the text box to the button
+        // when the mouse goes DOWN, but the click is only delivered when the mouse comes UP. A
+        // telemetry frame arriving in between used to put the card's OLD value back into the box,
+        // so the click then sent the old value (about 1 in 10 presses).
+        // Now a box the user changed is never overwritten by telemetry until the value was sent
+        // (then telemetry is held off for 2 s so the card can report the new value), or until
+        // EDIT is switched off / the connection is cleared.
+        private sealed class EditGuard { public bool Dirty; public DateTime HoldUntil = DateTime.MinValue; }
+        private readonly System.Collections.Generic.Dictionary<TextBox, EditGuard> _guards =
+            new System.Collections.Generic.Dictionary<TextBox, EditGuard>();
+        private bool _telemetryWrite;
+
+        private EditGuard Guard(TextBox tb)
+        {
+            if (!_guards.TryGetValue(tb, out EditGuard g))
+            {
+                g = new EditGuard();
+                _guards[tb] = g;
+                tb.TextChanged += (s, e) => { if (!_telemetryWrite) g.Dirty = true; };   // typed / pasted by the user
+            }
+            return g;
+        }
+
+        private void ApplyTelemetryText(TextBox tb, string value)
+        {
+            EditGuard g = Guard(tb);
+            if (tb.IsFocused || g.Dirty || DateTime.UtcNow < g.HoldUntil) return;   // user is editing / just sent
+            if (tb.Text == value) return;
+            _telemetryWrite = true;
+            try { tb.Text = value; } finally { _telemetryWrite = false; }
+        }
+
+        private void MarkSent(TextBox tb)
+        {
+            EditGuard g = Guard(tb);
+            g.Dirty = false;
+            g.HoldUntil = DateTime.UtcNow.AddSeconds(2);
+        }
+
+        private void ResetGuards()
+        {
+            foreach (EditGuard g in _guards.Values) { g.Dirty = false; g.HoldUntil = DateTime.MinValue; }
+        }
+
         // ══════════════════ EDIT MODE ══════════════════
         // Motor type, brake, speed, current, acceleration, deceleration, direction and their
         // SET buttons are locked until EDIT is switched on (same idea as the ZPA panel).
@@ -1835,6 +1880,7 @@ namespace BLDC_Demo
                 RightMotorCombo.IsDropDownOpen = false;
                 RightBrakeCombo.IsDropDownOpen = false;
                 RightDirectionCombo.IsDropDownOpen = false;
+                ResetGuards();   // back to showing the card's values
             }
             RightFieldsGrid.IsEnabled = IsEditMode;
         }
@@ -1962,6 +2008,7 @@ namespace BLDC_Demo
 
             // Register 0x003F = Right Speed
             BLLogic?.SendWriteCommand(0x003F, (ushort)speed);
+            MarkSent(RightSpeedTextBox);
             System.Diagnostics.Debug.WriteLine("Rightmotor_speed command sent");
         }
 
@@ -1972,6 +2019,7 @@ namespace BLDC_Demo
 
             // Register 0x0042 = Right Acceleration
             BLLogic?.SendWriteCommand(0x0042, (ushort)accel);
+            MarkSent(RightAccelTextBox);
             System.Diagnostics.Debug.WriteLine("Rightmotor_accel command sent");
         }
 
@@ -1984,6 +2032,7 @@ namespace BLDC_Demo
 
             // Register 0x0043 = Right Deceleration
             BLLogic?.SendWriteCommand(0x0043, (ushort)decel);
+            MarkSent(RightDecelTextBox);
             System.Diagnostics.Debug.WriteLine("Rightmotor_Decel command sent");
         }
 
@@ -2027,23 +2076,11 @@ namespace BLDC_Demo
 
                 // FIXED: do not overwrite a box the user is typing in
                 // (the old "|| value == "0"" check erased typing while the motor was stopped).
-                if (!RightSpeedTextBox.IsFocused)
-                {
-                    if (RightSpeedTextBox.Text != device.RightSpeed)
-                        RightSpeedTextBox.Text = device.RightSpeed;
-                }
+                ApplyTelemetryText(RightSpeedTextBox, device.RightSpeed);
 
-                if (!RightAccelTextBox.IsFocused)
-                {
-                    if (RightAccelTextBox.Text != device.RightAcceleration)
-                        RightAccelTextBox.Text = device.RightAcceleration;
-                }
+                ApplyTelemetryText(RightAccelTextBox, device.RightAcceleration);
 
-                if (!RightDecelTextBox.IsFocused)
-                {
-                    if (RightDecelTextBox.Text != device.RightDeceleration)
-                        RightDecelTextBox.Text = device.RightDeceleration;
-                }
+                ApplyTelemetryText(RightDecelTextBox, device.RightDeceleration);
 
                 if (RightCurrentTextBox.Text != device.RightCurrent)
                     RightCurrentTextBox.Text = device.RightCurrent;
@@ -2076,6 +2113,7 @@ namespace BLDC_Demo
             _seenMotor = _seenBrake = _seenDir = -2;   // show the card's motor type / brake / direction again after the next connect
             RightEditToggle.IsChecked = false;           // locked again after a disconnect
             RightFieldsGrid.IsEnabled = false;
+            ResetGuards();
             RightBrakeCombo.SelectedIndex = -1;
             RightMotorCombo.SelectedIndex = -1;
             RightDirectionCombo.SelectedIndex = -1;
