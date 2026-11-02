@@ -1367,6 +1367,7 @@ namespace BLDC_Demo
             if (ModeComboBox.SelectedIndex == 0)
             {
                 BLLogic.SendWriteCommand(0x0040, 0);
+                _zpaOffUntil = DateTime.UtcNow.AddSeconds(10);   // ignore stale "ZPA on" frames
                 System.Diagnostics.Debug.WriteLine("[ZPA SET] Mode sent: 0 (OFF)");
                 SetZpaActiveIndicator(false);
                 _previousZpaMode = 0;
@@ -1487,12 +1488,20 @@ namespace BLDC_Demo
 
         private int _previousZpaMode = -1;
 
+        // After the user sends mode OFF the card still reports ZPA for a moment (it first tells the
+        // other cards, then leaves ZPA). Those last telemetry frames must not look like a NEW
+        // activation, otherwise the "ZPA is active" box pops up while switching to normal.
+        private DateTime _zpaOffUntil = DateTime.MinValue;
+
         public void UpdateMotorTelemetry(ModbusDevice device)
         {
             if (device == null) return;
 
             Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
+                if (device.ZpaMode == 1 && DateTime.UtcNow < _zpaOffUntil) return;   // card is still leaving ZPA
+                if (device.ZpaMode != 1) _zpaOffUntil = DateTime.MinValue;
+
                 // Read mode status directly from telemetry
                 if (device.ZpaMode == 1)
                 {

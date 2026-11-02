@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d/8vzF7sOfn476IVFQXUuHZpo4CqRCdA25iTUd3Gh1hMfmoVAIdpbRu7NxWETe7GwauYA+3tfTREqLCFe+Gc0g==",
+  "dgSpecHash": "AERYY5emNtJYG4cJ8jauvGCdA4kAni3/59zFcdnRb0dtlgQ9Ze3dnlEPWYzFtE5w7bnYrs/FiqQmRBdjjWoYHA==",
   "success": true,
-  "projectFilePath": "D:\\Slack Downloads\\TEC_MDR_Application\\TEC_MDR_Application\\BLDC_Demo.csproj",
+  "projectFilePath": "D:\\iva\\TECT_BLDC\\Code\\TEC_MDR_Application\\BLDC_Demo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivauser\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\10.0.10\\microsoft.bcl.asyncinterfaces.10.0.10.nupkg.sha512",
     "C:\\Users\\ivauser\\.nuget\\packages\\nmodbus4\\2.1.0\\nmodbus4.2.1.0.nupkg.sha512",

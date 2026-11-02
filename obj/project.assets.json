@@ -1381,11 +1381,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Slack Downloads\\TEC_MDR_Application\\TEC_MDR_Application\\BLDC_Demo.csproj",
+      "projectUniqueName": "D:\\iva\\TECT_BLDC\\Code\\TEC_MDR_Application\\BLDC_Demo.csproj",
       "projectName": "BLDC_Demo",
-      "projectPath": "D:\\Slack Downloads\\TEC_MDR_Application\\TEC_MDR_Application\\BLDC_Demo.csproj",
+      "projectPath": "D:\\iva\\TECT_BLDC\\Code\\TEC_MDR_Application\\BLDC_Demo.csproj",
       "packagesPath": "C:\\Users\\ivauser\\.nuget\\packages\\",
-      "outputPath": "D:\\Slack Downloads\\TEC_MDR_Application\\TEC_MDR_Application\\obj\\",
+      "outputPath": "D:\\iva\\TECT_BLDC\\Code\\TEC_MDR_Application\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

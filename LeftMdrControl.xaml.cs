@@ -1718,7 +1718,7 @@ namespace BLDC_Demo
         }
 
         // Motor type and brake method follow what the card reports, so they are shown after connecting.
-        private int _seenMotor = -2, _seenBrake = -2;
+        private int _seenMotor = -2, _seenBrake = -2, _seenDir = -2;
         private bool _syncing;     // programmatic change: nothing is sent to the card
 
         private void SyncMotorType(int ratio)
@@ -1739,6 +1739,38 @@ namespace BLDC_Demo
                 }
                 break;
             }
+        }
+
+        // ══════════════════ EDIT MODE ══════════════════
+        // Motor type, brake, speed, current, acceleration, deceleration, direction and their
+        // SET buttons are locked until EDIT is switched on (same idea as the ZPA panel).
+        // The RUN button and the live values / error flags are not affected.
+        public bool IsEditMode => LeftEditToggle?.IsChecked == true;
+
+        private void LeftEditToggle_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsEditMode)
+            {
+                System.Windows.Input.Keyboard.ClearFocus();
+                LeftMotorCombo.IsDropDownOpen = false;
+                LeftBrakeCombo.IsDropDownOpen = false;
+                LeftDirectionCombo.IsDropDownOpen = false;
+            }
+            LeftFieldsGrid.IsEnabled = IsEditMode;
+        }
+
+        // Show the card's real motor direction (telemetry "CW" / "CCW") in the DIRECTION box.
+        // Same rule as the brake box: a box the user is choosing in is not touched, and nothing
+        // is sent from here (the box has no SelectionChanged handler).
+        private void SyncDirection(string dir)
+        {
+            if (string.IsNullOrEmpty(dir)) return;
+            int index = (dir == "CCW") ? 1 : 0;      // 0 = Clockwise, 1 = Anticlockwise
+            if (index == _seenDir) return;
+            _seenDir = index;
+            if (LeftDirectionCombo.IsDropDownOpen) return;
+            if (LeftDirectionCombo.SelectedIndex != index)
+                LeftDirectionCombo.SelectedIndex = index;
         }
 
         private void SyncBrake(int index)
@@ -1913,6 +1945,7 @@ namespace BLDC_Demo
             {
                 SyncMotorType(device.LeftMotorHallTypeIndex);
                 SyncBrake(device.LeftBrakeIndex);
+                SyncDirection(device.LeftDirection);
 
                 // FIXED: do not overwrite a box the user is typing in
                 // (the old "|| value == "0"" check erased typing while the motor was stopped).
@@ -1959,7 +1992,9 @@ namespace BLDC_Demo
             LeftCurrentTextBox.Text = string.Empty;
             LeftAccelTextBox.Text = string.Empty;
             LeftDecelTextBox.Text = string.Empty;
-            _seenMotor = _seenBrake = -2;   // show the card's motor type / brake again after the next connect
+            _seenMotor = _seenBrake = _seenDir = -2;   // show the card's motor type / brake / direction again after the next connect
+            LeftEditToggle.IsChecked = false;           // locked again after a disconnect
+            LeftFieldsGrid.IsEnabled = false;
             LeftBrakeCombo.SelectedIndex = -1;
             LeftMotorCombo.SelectedIndex = -1;
             LeftDirectionCombo.SelectedIndex = -1;
